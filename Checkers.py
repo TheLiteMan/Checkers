@@ -988,17 +988,23 @@ class GameView(arcade.View):
 
         if self.score_text:
             self.score_text.text = f"Белые: {self.board.white_score}   Черные: {self.board.black_score}"
+            # Меняем цвет текста счета на черный
+            self.score_text.color = BLACK
 
             # Анимация текста текущего игрока
             if self.board.current_player:
                 alpha = int(255 * (0.7 + 0.3 * math.sin(current_time * 3)))
-                self.player_text.color = (WHITE[0], WHITE[1], WHITE[2], alpha)
+                # Меняем цвет текста текущего игрока на черный
+                self.player_text.color = (BLACK[0], BLACK[1], BLACK[2], alpha)
                 self.player_text.text = f"Ходят: Белые"
             else:
                 alpha = int(255 * (0.7 + 0.3 * math.sin(current_time * 3)))
-                self.player_text.color = (RED[0], RED[1], RED[2], alpha)
+                # Меняем цвет текста текущего игрока на черный
+                self.player_text.color = (BLACK[0], BLACK[1], BLACK[2], alpha)
                 self.player_text.text = f"Ходят: Черные"
 
+            # Меняем цвет текста остатка шашек на черный
+            self.pieces_text.color = BLACK
             self.pieces_text.text = f"Осталось шашек: Белые - {self.board.white_pieces}, Черные - {self.board.black_pieces}"
 
     def on_draw(self):
